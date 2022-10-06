@@ -1,30 +1,20 @@
 import './App.css';
-import axios from "axios";
-import {useState} from "react";
+import {Routes,Route} from "react-router-dom";
+import RegisterForm from "./User/RegisterForm";
+import HomePage from "./HomePage";
+
 
 
 function App() {
-
-
-    const [temp,setTemp] = useState(null);
-    return (
-        <div className="App">
-            <input type="text" onChange={(e)=>{setTemp(e.target.value)}}/>
-            <button type="button" onClick={()=>{
-                axios.get(`http://localhost:8080/test/${temp}`)
-                    .then((res)=>{
-                        if(res.status === 200)
-                        {
-                            alert("done");
-                        }
-                        else alert("failed");
-                    })
-                    .catch((err)=>{
-
-                    })
-            }}>button</button>
-        </div>
-      );
+    return(
+        <>
+            <Routes>
+                <Route index element={<HomePage/>}/>
+                {/*user*/}
+                <Route path="/register" exact={true} element={<RegisterForm/>}/>
+            </Routes>
+        </>
+    );
 }
 
 export default App;

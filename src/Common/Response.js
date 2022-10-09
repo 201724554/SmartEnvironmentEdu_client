@@ -1,0 +1,3 @@
+export const RESPONSE_OK = 200;
+export const RESPONSE_CONFLICT = 409;
+export const RESPONSE_SERV_UNAVAILABLE = 503;

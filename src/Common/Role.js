@@ -1,0 +1,1 @@
+export const ROLE = ['STUDENT', 'EDUCATOR','MANAGER','ADMIN'];

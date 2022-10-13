@@ -4,6 +4,7 @@ import RegisterForm from "./User/Register/RegisterForm";
 import HomePage from "./HomePage";
 import EducatorRegisterForm from "./User/Register/EducatorRegisterForm";
 import UserAuthentication from "./User/Register/UserAuthentication";
+import LoginForm from "./Login/LoginForm";
 
 
 
@@ -16,6 +17,8 @@ function App() {
                 <Route path="/register" exact={true} element={<RegisterForm/>}/>
                 <Route path="/register/authentication" exact={true} element={<UserAuthentication/>}/>
                 <Route path="/register/educator" exact={true} element={<EducatorRegisterForm/>}/>
+                {/*login*/}
+                <Route path="/login" exacth={true} element={<LoginForm/>}/>
             </Routes>
         </>
     );

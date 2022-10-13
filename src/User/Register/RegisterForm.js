@@ -1,5 +1,5 @@
 import {useForm} from "react-hook-form";
-import {RESPONSE_CONFLICT, RESPONSE_OK, RESPONSE_SERV_UNAVAILABLE} from "../../Common/Response";
+import {RESPONSE_BAD_REQ, RESPONSE_CONFLICT, RESPONSE_OK, RESPONSE_SERV_UNAVAILABLE} from "../../Common/Response";
 import {customAxios} from "../../Common/CustomAxios";
 import {useNavigate} from "react-router-dom";
 import {useState} from "react";
@@ -24,9 +24,13 @@ function RegisterForm()
                     navigate("/register/authentication", {state: { username: data.username, email: data.email, userRole: ROLE[0] }});
                 }
             }).catch((error) => {
-                if (error.response.request.status === RESPONSE_CONFLICT)
+                if (error.response.request.status === RESPONSE_BAD_REQ)
                 {
                     alert("형식에 맞게 입력해주세요");
+                }
+                else if (error.response.request.status === RESPONSE_CONFLICT)
+                {
+                    alert("이미 사용된 아이디 또는 이메일입니다");
                 }
                 else if(error.response.request.status === RESPONSE_SERV_UNAVAILABLE)
                 {

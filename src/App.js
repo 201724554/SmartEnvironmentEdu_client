@@ -12,6 +12,7 @@ function App() {
     return(
         <>
             <Routes>
+                {/*home*/}
                 <Route index element={<HomePage/>}/>
                 {/*user*/}
                 <Route path="/register" exact={true} element={<RegisterForm/>}/>

@@ -12,8 +12,7 @@ function LoginForm()
     {
         customAxios.post("/login",{...data})
             .then((response)=> {
-                console.log(localStorage.getItem("jwt"))
-                //navigate(-1);
+                navigate(-1);
             })
             .catch((error)=>{
                 if(error.response.request.status === RESPONSE_UNAUTHORIZED)

@@ -16,7 +16,7 @@ function ConnectPage()
     {
         const sock = new SockJS("http://localhost:8080/client/socket");
         stompClient = stomp.over(sock);
-        stompClient.connect({authorization:localStorage.getItem("jwt")},onConnected)
+        stompClient.connect({refresh:localStorage.getItem("jwt")},onConnected,onError)
     }
 
     function onConnected()
@@ -24,10 +24,16 @@ function ConnectPage()
         stompClient.send(null,null,"test");
     }
 
+    function onError()
+    {
+
+    }
+
     function send()
     {
         stompClient.send(null,null,JSON.stringify(json));
     }
+
     return(
         <div>
             <button onClick={register}>register</button>

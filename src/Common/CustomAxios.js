@@ -1,5 +1,6 @@
 import axios from "axios";
-import {RESPONSE_FORBIDDEN, RESPONSE_UNAUTHORIZED} from "./Response";
+import {RESPONSE_FORBIDDEN, RESPONSE_OK, RESPONSE_UNAUTHORIZED} from "./Response";
+import {isExpired} from "react-jwt";
 
 export const customAxios = axios.create({
     baseURL: "http://localhost:8080"
@@ -8,6 +9,10 @@ export const customAxios = axios.create({
 customAxios.interceptors.request.use(
     function (config)
     {
+        if(isExpired(localStorage.getItem("jwt")))
+        {
+            config.headers.refresh = localStorage.getItem("refresh");
+        }
         config.headers.ContentType = "application/json; charset=utf-8";
         config.headers.authorization = localStorage.getItem("jwt");
         return config;
@@ -21,8 +26,13 @@ customAxios.interceptors.response.use(
         {
             localStorage.setItem("jwt", response.headers['authorization']);
         }
+        if(response.headers['refresh'] !== undefined)
+        {
+            localStorage.setItem("refresh", response.headers['refresh']);
+        }
         return response;
     },
+
     function (error) {
         if(error.response.headers['authorization'] !== undefined)
         {
@@ -30,10 +40,19 @@ customAxios.interceptors.response.use(
         }
         if (error.response.request.status === RESPONSE_UNAUTHORIZED)
         {
-            alert("로그인 해주세요");
-            axios.post(`http://localhost:8080/logout`)
+            axios.post(`http://localhost:8080/Logout`,{},{
+            headers:
+                {
+                    ContentType: "application/json; charset=utf-8",
+                    authorization: localStorage.getItem("jwt")
+                }
+            })
                 .then((response)=>{
-                    localStorage.clear();
+                    if(response.data.code === RESPONSE_OK)
+                    {
+                        localStorage.clear();
+                        alert("로그인 해주세요");
+                    }
                 }).catch((error)=>{
                     alert(error.response.request.status);
             });

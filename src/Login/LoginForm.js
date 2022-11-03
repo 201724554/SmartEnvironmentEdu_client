@@ -12,7 +12,8 @@ function LoginForm()
     {
         customAxios.post("/login",{...data})
             .then((response)=> {
-                console.log(localStorage.getItem("jwt"))
+                console.log(response)
+                //console.log(localStorage.getItem("jwt"))
                 //navigate(-1);
             })
             .catch((error)=>{

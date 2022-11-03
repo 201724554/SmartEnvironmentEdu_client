@@ -1,5 +1,6 @@
 import axios from "axios";
 import {RESPONSE_FORBIDDEN, RESPONSE_UNAUTHORIZED} from "./Response";
+import {isExpired} from "react-jwt";
 
 export const customAxios = axios.create({
     baseURL: "http://localhost:8080"
@@ -10,6 +11,13 @@ customAxios.interceptors.request.use(
     {
         config.headers.ContentType = "application/json; charset=utf-8";
         config.headers.authorization = localStorage.getItem("jwt");
+        if(isExpired(localStorage.getItem("jwt")))
+        {
+            if(localStorage.getItem("refresh") != null)
+            {
+                config.headers.refresh = localStorage.getItem("refresh");
+            }
+        }
         return config;
     }
 )
@@ -21,22 +29,17 @@ customAxios.interceptors.response.use(
         {
             localStorage.setItem("jwt", response.headers['authorization']);
         }
+        if(response.headers['refresh'] !== undefined)
+        {
+            localStorage.setItem("refresh", response.headers['refresh']);
+        }
         return response;
     },
     function (error) {
-        if(error.response.headers['authorization'] !== undefined)
-        {
-            localStorage.setItem("jwt", error.response.headers['authorization']);
-        }
         if (error.response.request.status === RESPONSE_UNAUTHORIZED)
         {
             alert("로그인 해주세요");
-            axios.post(`http://localhost:8080/logout`)
-                .then((response)=>{
-                    localStorage.clear();
-                }).catch((error)=>{
-                    alert(error.response.request.status);
-            });
+            localStorage.clear();
         }
         else if(error.response.request.status === RESPONSE_FORBIDDEN)
         {

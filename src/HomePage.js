@@ -23,6 +23,9 @@ function HomePage()
     function test()
     {
         console.log(localStorage.getItem("jwt"));
+        console.log(isExpired(localStorage.getItem("jwt")));
+        console.log(localStorage.getItem("refresh"));
+        console.log(isExpired(localStorage.getItem("refresh")));
     }
 
     function test2()

@@ -66,16 +66,6 @@ function RegisterForm()
                     <input placeholder="이메일" type="email" {...register("email", {required: {value: true, message: "이메일을 입력하세요"}})}/>
                     {errors.email && <span style={{color:'red', fontSize:"13px"}}>{errors.email.message}</span>}
                 </div>
-                {/*<div>
-                    <input placeholder="기기 MAC 주소 XX-XX-XX-XX" maxLength={20} {...register("userDeviceMAC", {
-                        required: {
-                            value: false,
-                            message: "MAC 주소를 입력하세요"
-                        }
-                    })}/>
-                    {errors.userDeviceMAC &&
-                        <span style={{color: 'red', fontSize: "13px"}}>{errors.userDeviceMAC.message}</span>}
-                </div>*/}
                 <input type="submit"/>
             </form>
         </>

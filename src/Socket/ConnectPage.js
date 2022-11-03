@@ -1,37 +1,42 @@
 import SockJS from 'sockjs-client';
-import {useEffect} from "react";
+import {useEffect, useState} from "react";
+import {decodeToken} from "react-jwt";
+import {customAxios} from "../Common/CustomAxios";
+import {RESPONSE_CONFLICT, RESPONSE_UNAUTHORIZED} from "../Common/Response";
+import SocketConnect from "./SocketConnect";
 
-const stomp = require('stompjs');
-let stompClient = null;
-let json = null;
 function ConnectPage()
 {
+    const username = localStorage.getItem("refresh") === null ? null : decodeToken(localStorage.getItem("refresh")).username;
+    const [connectableSocket, setConnectableSocket] = useState([]);
+
     useEffect(()=>{
-        json = {};
-        json.data = "test";
-        json.name = 'jin';
-    },[])
+        if(username === null)
+        {
+            alert("로그인이 필요합니다");
+            return;
+        }
+        customAxios.get(`/user/device/${username}`)
+            .then((response)=>{
+                setConnectableSocket(response.data.data);
+            })
+            .catch((error)=>{
+                if(error.response.request.status === RESPONSE_CONFLICT)
+                {
+                    alert("기기를 추가해주세요");
+                }
+            })
+    },[]);
 
-    function register()
-    {
-        const sock = new SockJS("http://localhost:8080/client/socket");
-        stompClient = stomp.over(sock);
-        stompClient.connect({authorization:localStorage.getItem("jwt")},onConnected)
-    }
-
-    function onConnected()
-    {
-        stompClient.send(null,null,"test");
-    }
-
-    function send()
-    {
-        stompClient.send(null,null,JSON.stringify(json));
-    }
     return(
         <div>
-            <button onClick={register}>register</button>
-            <button onClick={send}>send</button>
+            {
+                connectableSocket.map((elem,idx)=>
+                    (<div key={idx}>
+                        <SocketConnect mac={elem}/>
+                    </div>)
+                )
+            }
         </div>
     );
 }

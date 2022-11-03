@@ -1,7 +1,6 @@
 import {useForm} from "react-hook-form";
-import {useNavigate} from "react-router-dom";
 import {customAxios} from "../../Common/CustomAxios";
-import {RESPONSE_BAD_REQ, RESPONSE_CONFLICT, RESPONSE_UNAUTHORIZED} from "../../Common/Response";
+import {RESPONSE_BAD_REQ} from "../../Common/Response";
 import {decodeToken} from "react-jwt";
 
 function AddMACForm()
@@ -17,7 +16,7 @@ function AddMACForm()
             return;
         }
         if(window.confirm("MAC 주소를 확인하셨나요?")) {
-            customAxios.post("/user/MAC", {...data})
+            customAxios.post("/manager/device", {...data})
                 .then((response) => {
                     alert("등록 완료");
                 })

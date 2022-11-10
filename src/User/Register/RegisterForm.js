@@ -17,7 +17,7 @@ function RegisterForm()
     {
         if(data.password === passwordCheck)
         {
-            customAxios.post("http://localhost:8080/register", {...data}).then((response) => {
+            customAxios.post("/register", {...data}).then((response) => {
                 if(response.data.code === RESPONSE_OK)
                 {
                     alert("입력하신 메일 주소로 인증번호를 전송했습니다. 가입 완료를 위해 인증번호를 입력해주세요");

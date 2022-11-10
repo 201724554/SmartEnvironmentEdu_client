@@ -32,7 +32,7 @@ function AddMACForm()
         <>
             <form onSubmit={handleSubmit(onSubmit)}>
                 <div>
-                    <input placeholder="00-00-00-00-00-00" {...register("MAC", {required: {value: true, message: "MAC 주소를 입력하세요"}})}/>
+                    <input placeholder="00:00:00:00:00:00" {...register("MAC", {required: {value: true, message: "MAC 주소를 입력하세요"}})}/>
                     {errors.username && <span style={{color:'red', fontSize:"13px"}}>{errors.username.message}</span>}
                 </div>
                 <button type="submit">추가하기</button>

@@ -11,7 +11,9 @@ function SocketConnect(props)
 
     useEffect(()=>{
         json = {};
-        json.mac = "bb-bb-bb-bb-bb-bb";
+        json.MAC = "bb-bb-bb-bb-bb-bb";
+        json.data = "Test";
+        json.name = "jin";
     },[])
 
     function register()
@@ -30,8 +32,7 @@ function SocketConnect(props)
     function onConnected()
     {
         setConnected(true);
-        stompClient.subscribe("/topic/user/" + props.mac, onMessageReceived, onError);
-        //stompClient.send("/app/device",{},JSON.stringify(json));
+        stompClient.subscribe("/topic/" + props.mac, onMessageReceived, onError);
     }
 
     function onError()

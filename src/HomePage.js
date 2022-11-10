@@ -1,7 +1,6 @@
 import {customAxios} from "./Common/CustomAxios";
 import {RESPONSE_BAD_REQ, RESPONSE_OK} from "./Common/Response";
 import {isExpired} from "react-jwt";
-import axios from "axios";
 
 function HomePage()
 {
@@ -30,7 +29,12 @@ function HomePage()
 
     function test2()
     {
-        customAxios.get("http://localhost:8080/user/test").then((res)=>{console.log(res)})
+        customAxios.get("/user/test").then((res)=>{console.log(res)})
+    }
+
+    function authUp()
+    {
+        customAxios.post("/test/authup",{username: "pay7845"}).then((res)=>{console.log(res)})
     }
     return(
       <>
@@ -38,6 +42,7 @@ function HomePage()
           <button type="button" onClick={logout}>로그아웃</button>
           <button type="button" onClick={test}>test</button>
           <button type="button" onClick={test2}>test2</button>
+          <button type="button" onClick={authUp}>auth</button>
       </>
     );
 }

@@ -1,1 +1,1 @@
-export const ROLE = ['STUDENT', 'EDUCATOR','MANAGER','ADMIN'];
+export const ROLE = ['ROLE_STUDENT', 'ROLE_EDUCATOR','ROLE_MANAGER','ROLE_ADMIN'];

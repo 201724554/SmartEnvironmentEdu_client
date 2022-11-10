@@ -17,7 +17,7 @@ function RegisterForm()
     {
         if(data.password === passwordCheck)
         {
-            customAxios.post("http://localhost:8080/register", {...data}).then((response) => {
+            customAxios.post("/register", {...data}).then((response) => {
                 if(response.data.code === RESPONSE_OK)
                 {
                     alert("입력하신 메일 주소로 인증번호를 전송했습니다. 가입 완료를 위해 인증번호를 입력해주세요");
@@ -66,16 +66,6 @@ function RegisterForm()
                     <input placeholder="이메일" type="email" {...register("email", {required: {value: true, message: "이메일을 입력하세요"}})}/>
                     {errors.email && <span style={{color:'red', fontSize:"13px"}}>{errors.email.message}</span>}
                 </div>
-                {/*<div>
-                    <input placeholder="기기 MAC 주소 XX-XX-XX-XX" maxLength={20} {...register("userDeviceMAC", {
-                        required: {
-                            value: false,
-                            message: "MAC 주소를 입력하세요"
-                        }
-                    })}/>
-                    {errors.userDeviceMAC &&
-                        <span style={{color: 'red', fontSize: "13px"}}>{errors.userDeviceMAC.message}</span>}
-                </div>*/}
                 <input type="submit"/>
             </form>
         </>

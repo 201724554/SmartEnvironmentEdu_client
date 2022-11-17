@@ -8,12 +8,16 @@ import AddMACForm from "./Device/Manager/AddMACForm";
 import LoginForm from "./Login/LoginForm";
 import ConnectPage from "./Socket/ConnectPage";
 import RegisterDeviceForm from "./Device/User/RegisterDeviceForm";
+import Header from "./Header/Header";
+import TestSocket from "./Test/SocketTest";
+import TestFetch from "./Test/TestFetch";
 
 
 
 function App() {
     return(
         <>
+            <Header/>
             <Routes>
                 {/*home*/}
                 <Route index element={<HomePage/>}/>
@@ -28,6 +32,9 @@ function App() {
                 <Route path="/login" exact={true} element={<LoginForm/>}/>
                 {/*socket*/}
                 <Route path="/socket" exact={true} element={<ConnectPage/>}/>
+                {/*test*/}
+                <Route path="/test/socket" exact={true} element={<TestSocket/>}/>
+                <Route path="/test/fetch" exact={true} element={<TestFetch/>}/>
             </Routes>
         </>
     );

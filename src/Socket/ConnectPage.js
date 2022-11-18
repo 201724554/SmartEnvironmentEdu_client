@@ -34,6 +34,7 @@ function ConnectPage()
                 connectableSocket.map((elem,idx)=>
                     (<div key={idx}>
                         <SocketConnect mac={elem}/>
+                        <br/>
                     </div>)
                 )
             }

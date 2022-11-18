@@ -46,7 +46,7 @@ function App() {
         <Route path="/login" exact={true} element={<LoginForm />} />
         {/*socket*/}
         <Route path="/socket" exact={true} element={<ConnectPage />} />
-        {/*testt*/}
+        {/*test*/}
         <Route path="/test/socket" exact={true} element={<TestSocket />} />
         <Route path="/test/fetch" exact={true} element={<TestFetch />} />
       </Routes>

@@ -4,6 +4,7 @@ import {decodeToken} from "react-jwt";
 import {customAxios} from "../Common/CustomAxios";
 import {RESPONSE_CONFLICT, RESPONSE_UNAUTHORIZED} from "../Common/Response";
 import SocketConnect from "./SocketConnect";
+import UserMacList from "./UserMacList";
 
 function ConnectPage()
 {
@@ -19,6 +20,7 @@ function ConnectPage()
         customAxios.get(`/user/device/${username}`)
             .then((response)=>{
                 setConnectableSocket(response.data.data);
+                //console.log(response.data.data);
             })
             .catch((error)=>{
                 if(error.response.request.status === RESPONSE_CONFLICT)
@@ -33,7 +35,8 @@ function ConnectPage()
             {
                 connectableSocket.map((elem,idx)=>
                     (<div key={idx}>
-                        <SocketConnect mac={elem}/>
+                        {/*<SocketConnect mac={elem}/>*/}
+                        <UserMacList mac={elem}/>
                         <br/>
                     </div>)
                 )

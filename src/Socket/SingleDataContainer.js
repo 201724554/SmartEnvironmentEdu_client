@@ -9,7 +9,6 @@ function SingleDataContainer(props)
         if(props.current !== null && props.current !== undefined)
         {
             object = JSON.parse(props.current);
-            console.log(object)
             if(props.type === "temp")
             {
                 setValue(object.temp);
@@ -24,7 +23,7 @@ function SingleDataContainer(props)
             }
             else if(props.type === "hum_earth")
             {
-                setValue(object.hum_earth);
+                setValue(object.hum_EARTH);
             }
             else if(props.type === "tur")
             {
@@ -34,9 +33,9 @@ function SingleDataContainer(props)
             {
                 setValue(object.dust);
             }
-            else if(props.type === "do")
+            else if(props.type === "dox")
             {
-                setValue(object.do);
+                setValue(object.dox);
             }
             else if(props.type === "co2")
             {

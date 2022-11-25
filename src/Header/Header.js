@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './Header.css';
-import {Navbar, Nav, Container} from 'react-bootstrap';
+import { Navbar, Nav, Container, NavDropdown } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
 import { decodeToken, isExpired } from 'react-jwt';
 import { customAxios } from '../Common/CustomAxios';
@@ -31,7 +31,7 @@ function Header() {
   return (
     <div className="fixed-top">
       <div>
-        <Navbar style={{ height: '2em', fontSize: '0.8em' }}>
+        <Navbar style={{ height: '2em', fontSize: '0.8em' }} bg="light">
           <Container className="justify-content-end">
             <Nav>
               {isExpired(localStorage.getItem('refresh')) === true ? (
@@ -48,13 +48,13 @@ function Header() {
                   <NavLink
                     className={'nav-link'}
                     to="/"
-                    style={{ color: 'white' }}
+                    style={{ color: 'black' }}
                   >
                     {username}
                   </NavLink>
                   <span
                     className={'nav-link'}
-                    style={{ color: 'white', cursor: 'pointer' }}
+                    style={{ color: 'black', cursor: 'pointer' }}
                     onClick={logout}
                   >
                     LOGOUT
@@ -66,7 +66,7 @@ function Header() {
         </Navbar>
       </div>
       <div>
-        <Navbar>
+        <Navbar bg="light">
           <Container
             className="justify-content-between"
             style={{ height: '5em' }}
@@ -164,13 +164,25 @@ function Header() {
                   Training and implementation
                 </NavLink>
               </NavDropdown>
-              <NavLink
-                className={'nav-link mx-2'}
-                to="/etc"
-                style={{ color: 'rgba(0,0,0,0.55)', fontSize: '1.2em' }}
+              <NavDropdown
+                title="CONTACT"
+                id="basic-nav-dropdown"
+                style={{ fontSize: '1.2em' }}
+                className={'mx-2'}
               >
-                CONTACT
-              </NavLink>
+                <NavLink className={'nav-link'} to="/">
+                  Contact us
+                </NavLink>
+                <NavLink className={'nav-link'} to="/">
+                  SEEd 기기 대여
+                </NavLink>
+                <NavLink className={'nav-link'} to="/">
+                  Education
+                </NavLink>
+                <NavLink className={'nav-link'} to="/">
+                  Board
+                </NavLink>
+              </NavDropdown>
             </Nav>
           </Container>
         </Navbar>

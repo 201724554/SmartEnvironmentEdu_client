@@ -58,9 +58,10 @@ function TestSocket()
 
     function send()
     {
+        let date = new Date();
         json = {};
         json.mac = "bb:bb:bb:bb:bb:bb";
-        json.date = "2022-08-13 12:00:00";
+        json.dateString = date.toUTCString();
         json.hum = 40 + cnt;
         json.temp = 24 + cnt;
         json.tur = 72.4 + cnt;
@@ -69,7 +70,7 @@ function TestSocket()
         json.dust = 74.4;
         json.hum_EARTH = 72.4;
         json.lux = 7.34;
-        json.do = 7.54;
+        json.dox = 7.54;
         json.pre = 7.41;
         cnt++;
         stompClient.send("/app/test", {}, JSON.stringify(json));

@@ -1,24 +1,29 @@
 import SockJS from 'sockjs-client';
 import {useEffect, useState} from "react";
-import {Button} from "react-bootstrap";
-import {forEach} from "react-bootstrap/ElementChildren";
 import SingleDataContainer from "./SingleDataContainer";
+import {decodeToken} from "react-jwt";
+import {customAxios} from "../Common/CustomAxios";
 
 
 const stomp = require('stompjs');
 let stompClient = null;
 let json = null;
-let object = null;
+let sendObject = null;
+let receiveObject = null
+let save = false;
+
 function SocketConnect(props)
 {
-    const dataTypes = ["temp", "pH", "hum", "hum_earth", "tur", "dust", "do", "co2", "lux", "pre"];
+    const dataTypes = ["temp", "pH", "hum", "hum_earth", "tur", "dust", "dox", "co2", "lux", "pre"];
+    const [checked, setChecked] = useState(false);
     const [connected, setConnected] = useState(false);
     const [receivedData, setReceivedData] = useState([]);
+    const [saveData, setSaveData] = useState([]);
 
     useEffect(()=>{
-        object = {};
+        sendObject = {};
         json = {};
-        json.mac = "bb:bb:bb:bb:bb:bb";
+        json.mac = props.mac;
         json.adjust = 0;
         json.value = 0;
         json.censor = "PH";
@@ -41,7 +46,7 @@ function SocketConnect(props)
     function onConnected()
     {
         setConnected(true);
-        stompClient.subscribe("/topic/user", onMessageReceived, onError);
+        stompClient.subscribe("/topic/user"/* + props.mac*/, onMessageReceived, onError);
     }
 
     function onError()
@@ -51,11 +56,28 @@ function SocketConnect(props)
 
     function onMessageReceived(payload)
     {
-        object = JSON.parse(payload.body);
-        receivedData.push(JSON.stringify(object));
+        console.log(save);
+        receiveObject = JSON.parse(payload.body);
+        receivedData.push(JSON.stringify(receiveObject));
+        if(receivedData.length > 100)
+        {
+            receivedData.splice(0,1);
+        }
+        if(save === true)
+        {
+            saveData.push(JSON.stringify(receiveObject));
+            setSaveData([...saveData]);
+            if(saveData.length === 10)
+            {
+                console.log("save");
+                customAxios.post("/user/save",{data: saveData}).then().catch(()=>{
+                    disconnect();
+                });
+                saveData.splice(0,saveData.length);
+                setSaveData([...saveData]);
+            }
+        }
         setReceivedData([...receivedData]);
-        console.log(receivedData);
-
     }
 
     function send()
@@ -66,20 +88,23 @@ function SocketConnect(props)
 
     return(
         <>
-            <div>{props.mac}</div>
             {
-                connected === false ? (<Button onClick={register}>connect</Button>) : (<Button onClick={disconnect}>disconnect</Button>)
+                connected === false ? (<button onClick={register}>connect</button>) : (<button onClick={disconnect}>disconnect</button>)
+            }
+            &nbsp;&nbsp;
+            {
+                props.username === decodeToken(localStorage.getItem("refresh")).username ? (<><input type="checkbox" checked={checked} onChange={()=>{save = !save;setChecked(!checked)}}/>&nbsp;저장하기</>) : (<></>)
             }
             &nbsp;&nbsp;
             {
                 connected === true
-                    ? dataTypes.map((elem)=>
-                        (<div key={elem}>
-                            <SingleDataContainer type={elem} data={receivedData} current={receivedData[receivedData.length-1]}/>
-                            <br/>
-                        </div>)
-                        )
-                    : (<></>)
+                ? dataTypes.map((elem)=>
+                (<div key={elem}>
+                <SingleDataContainer type={elem} data={receivedData} current={receivedData[receivedData.length-1]}/>
+                <br/>
+                </div>)
+                )
+                : (<></>)
             }
             {/*<Button onClick={send}>send</Button>*/}
         </>

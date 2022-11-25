@@ -11,6 +11,7 @@ import RegisterDeviceForm from "./Device/User/RegisterDeviceForm";
 import Header from "./Header/Header";
 import TestSocket from "./Test/SocketTest";
 import TestFetch from "./Test/TestFetch";
+import RegisterStudent from "./User/Educator/RegisterStudent";
 
 
 
@@ -35,6 +36,7 @@ function App() {
                 {/*test*/}
                 <Route path="/test/socket" exact={true} element={<TestSocket/>}/>
                 <Route path="/test/fetch" exact={true} element={<TestFetch/>}/>
+                <Route path="/test/student/add" exact={true} element={<RegisterStudent/>}/>
             </Routes>
         </>
     );

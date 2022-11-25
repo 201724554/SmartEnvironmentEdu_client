@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import './Header.css';
-import {Navbar, Nav, Container, NavDropdown} from 'react-bootstrap';
+import {Navbar, Nav, Container} from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
 import {decodeToken, isExpired} from "react-jwt";
 import {customAxios} from "../Common/CustomAxios";

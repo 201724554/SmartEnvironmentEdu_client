@@ -13,6 +13,7 @@ import TestSocket from './Test/SocketTest';
 import TestFetch from './Test/TestFetch';
 import RegisterStudent from './User/Educator/RegisterStudent';
 import Footer from './Footer/Footer';
+import Find from './Find/Find';
 
 function App() {
   return (
@@ -56,6 +57,7 @@ function App() {
           exact={true}
           element={<RegisterStudent />}
         />
+        <Route path="/find" exact={true} element={<Find/>} />
       </Routes>
       <Footer />
     </>

@@ -1,0 +1,46 @@
+.id{
+   margin:1em auto;
+   
+}
+
+input{
+    width:13em;
+}
+
+
+.password{
+    margin:1em auto;
+}
+
+h1{
+    margin-bottom:1em;
+}
+
+form{
+    margin:7em auto;
+    width:35em;
+    padding-left:7em;
+    
+}
+
+input{
+    width:18em;
+}
+
+.find{
+    height:2.5em;
+    padding-left:1.7em;
+    padding-top:0.5em;
+}
+
+.find > a{
+    margin-right:1.5em;
+    font-size:0.85em;
+    color:black;
+}
+
+button{
+    margin-top:0.8em;
+    width:18em;
+}
+

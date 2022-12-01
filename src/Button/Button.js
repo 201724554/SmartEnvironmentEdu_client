@@ -6,13 +6,13 @@ class Button_set extends Component {
     return (
       <div id="Button-3">
         <div id="buttonset">
-          <button type="button" class="btn btn-primary" id="b1">
+          <button type="button" className="btn btn-primary" id="b1">
             SEEd
           </button>
-          <button type="button" class="btn btn-primary" id="b2">
+          <button type="button" className="btn btn-primary" id="b2">
             Data
           </button>
-          <button type="button" class="btn btn-primary" id="b3">
+          <button type="button" className="btn btn-primary" id="b3">
             E-Class
           </button>
         </div>

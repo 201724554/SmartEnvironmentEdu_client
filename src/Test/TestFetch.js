@@ -2,12 +2,14 @@ import {customAxios} from "../Common/CustomAxios";
 import {useState} from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import {Button} from "react-bootstrap";
+import {Button, Table} from "react-bootstrap";
 import {RESPONSE_CONFLICT, RESPONSE_NOT_FOUND} from "../Common/Response";
+import DataTable from "./DataTable";
 
 
 function TestFetch()
 {
+    const headers = ["mac","temp", "pH", "hum", "hum_earth", "tur", "dust", "dox", "co2", "lux", "pre", "date"];
     const [data,setData] = useState([]);
     const [startDate, setStartDate] = useState(new Date());
     const [endDate, setEndDate] = useState(new Date());
@@ -20,7 +22,7 @@ function TestFetch()
 
         customAxios.get(`/user/fetch`,{params:{startDate: startDateString, endDate: endDateString, username: username}})
             .then((response)=>{
-                setData(response.data.data);
+                setData([...response.data.data]);
             })
             .catch((error)=>{
                 if(error.response.request.status === RESPONSE_NOT_FOUND)
@@ -37,38 +39,45 @@ function TestFetch()
     }
 
     return(
-        <>
-            <input value={username} onChange={handleChange}/>
-                <DatePicker
-                selected={startDate}
-                onChange={(date) => {
-                setStartDate(date);
-            }}
-                timeInputLabel="Time:"
-                dateFormat="yyyy-MM-dd HH:mm:ss"
-                showTimeInput
-                />
-                <DatePicker
-                selected={endDate}
-                onChange={(date) => {
-                setEndDate(date);
-            }}
-                timeInputLabel="Time:"
-                dateFormat="yyyy-MM-dd HH:mm:ss"
-                showTimeInput
-                />
+        <div className="col-10 mx-auto pt-5">
+                <input value={username} onChange={handleChange}/>
+                    <DatePicker
+                    selected={startDate}
+                    onChange={(date) => {
+                    setStartDate(date);
+                }}
+                    timeInputLabel="Time:"
+                    dateFormat="yyyy-MM-dd HH:mm:ss"
+                    showTimeInput
+                    />
+                    <DatePicker
+                    selected={endDate}
+                    onChange={(date) => {
+                    setEndDate(date);
+                }}
+                    timeInputLabel="Time:"
+                    dateFormat="yyyy-MM-dd HH:mm:ss"
+                    showTimeInput
+                    />
                 <Button onClick={submit} type="button">send</Button>
-                <div>
-                {
-                    data.map((elem,idx)=>
-                    (<div key={elem+idx}>
-                {JSON.stringify(elem)}
-                    </div>)
+            {
+                data.length === 0 ? (<></>) :
+                    (
+                        <Table>
+                            <thead>
+                            <tr>
+                                {
+                                    headers.map((elem,idx)=>
+                                        (<th key={idx}>{elem}</th>)
+                                    )
+                                }
+                            </tr>
+                            </thead>
+                            <DataTable data={data}/>
+                        </Table>
                     )
-                }
-                </div>
-
-        </>
+            }
+        </div>
     );
 }
 

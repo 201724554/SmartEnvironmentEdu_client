@@ -56,14 +56,14 @@ function SocketConnect(props)
 
     function onMessageReceived(payload)
     {
-        console.log(save);
         receiveObject = JSON.parse(payload.body);
-        receivedData.push(JSON.stringify(receiveObject));
-        if(receivedData.length > 100)
+        console.log(receiveObject.ph)
+        receivedData.push(receiveObject);
+        if(receivedData.length > 10)
         {
             receivedData.splice(0,1);
         }
-        if(save === true)
+        /*if(save === true)
         {
             saveData.push(JSON.stringify(receiveObject));
             setSaveData([...saveData]);
@@ -76,7 +76,7 @@ function SocketConnect(props)
                 saveData.splice(0,saveData.length);
                 setSaveData([...saveData]);
             }
-        }
+        }*/
         setReceivedData([...receivedData]);
     }
 
@@ -88,8 +88,9 @@ function SocketConnect(props)
 
     return(
         <>
+            <br/>
             {
-                connected === false ? (<button onClick={register}>connect</button>) : (<button onClick={disconnect}>disconnect</button>)
+                connected === false ? (<>{props.mac}<button onClick={register}>connect</button></>) : (<>{props.mac}<button onClick={disconnect}>disconnect</button></>)
             }
             &nbsp;&nbsp;
             {

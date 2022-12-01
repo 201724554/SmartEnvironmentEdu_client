@@ -35,7 +35,6 @@ function ConnectPage()
             {
                 connectableSocket.map((elem,idx)=>
                     (<div key={idx}>
-                        {/*<SocketConnect mac={elem}/>*/}
                         <UserMacList mac={elem}/>
                         <br/>
                     </div>)

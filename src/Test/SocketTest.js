@@ -56,22 +56,27 @@ function TestSocket()
         console.log(payload);
     }
 
+    function getRand(min, max)
+    {
+        return Math.random() * (max-min) + min;
+    }
+
     function send()
     {
         let date = new Date();
         json = {};
         json.mac = "bb:bb:bb:bb:bb:bb";
         json.dateString = date.toUTCString();
-        json.hum = 40 + cnt;
-        json.temp = 24 + cnt;
-        json.tur = 72.4 + cnt;
-        json.ph = 71.4 + cnt;
-        json.co2 = 74.4 + cnt;
-        json.dust = 74.4;
-        json.hum_EARTH = 72.4;
-        json.lux = 7.34;
-        json.dox = 7.54;
-        json.pre = 7.41;
+        json.hum = getRand(20, 40);
+        json.temp = getRand(20, 40);
+        json.tur = getRand(20, 40);
+        json.ph = getRand(20, 40);
+        json.co2 = getRand(20, 40);
+        json.dust = getRand(20, 40);
+        json.hum_EARTH = getRand(20, 40);
+        json.lux = getRand(20, 40);
+        json.dox = getRand(20, 40);
+        json.pre = getRand(20, 40);
         cnt++;
         stompClient.send("/app/test", {}, JSON.stringify(json));
     }

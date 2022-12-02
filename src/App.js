@@ -14,6 +14,7 @@ import TestFetch from './Test/TestFetch';
 import RegisterStudent from './User/Educator/RegisterStudent';
 import Footer from './Footer/Footer';
 import Find from './Find/Find';
+import Board from './Board/Board';
 
 function App() {
   return (
@@ -58,6 +59,7 @@ function App() {
           element={<RegisterStudent />}
         />
         <Route path="/find" exact={true} element={<Find/>} />
+        <Route path="/board" exact={true} element={<Board/>} />
       </Routes>
       <Footer />
     </>

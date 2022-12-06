@@ -58,7 +58,9 @@ function App() {
           exact={true}
           element={<RegisterStudent />}
         />
+        {/*id_password_find*/}
         <Route path="/find" exact={true} element={<Find/>} />
+        {/*board*/}
         <Route path="/board" exact={true} element={<Board/>} />
       </Routes>
       <Footer />

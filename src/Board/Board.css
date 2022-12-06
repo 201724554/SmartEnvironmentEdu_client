@@ -1,0 +1,22 @@
+button{
+    width:10em;
+    margin:0 auto;
+}
+
+
+
+form{
+    width:20em;
+}
+
+#all{
+    padding-left:4em;
+}
+
+#button_set{
+    width:3em;
+}
+
+.btn btn-secondary{
+    text-align: center;
+}

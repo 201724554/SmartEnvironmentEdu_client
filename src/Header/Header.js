@@ -102,7 +102,7 @@ function Header() {
                 <NavLink className={'nav-link'} to="/">
                   What we do
                 </NavLink>
-                <NavLink className={'nav-link'} to="/">
+                <NavLink className={'nav-link'} to="/team">
                   TEAM
                 </NavLink>
                 <NavLink className={'nav-link'} to="/">
@@ -179,7 +179,7 @@ function Header() {
                 <NavLink className={'nav-link'} to="/">
                   Education
                 </NavLink>
-                <NavLink className={'nav-link'} to="/">
+                <NavLink className={'nav-link'} to="/board">
                   Board
                 </NavLink>
               </NavDropdown>

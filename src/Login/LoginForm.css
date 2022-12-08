@@ -1,11 +1,13 @@
 .id{
    margin:0 auto;
+   width:60em;
 }
 
 
 
 .password{
     margin:0 auto;
+    width:60em;
 }
 
 h1{
@@ -13,15 +15,12 @@ h1{
 }
 
 form{
-    margin:7em auto;
-    width:35em;
-    padding-left:7em;
+    margin:9em auto; 
     
+
 }
 
-fieldset{
-    width:40em;
-}
+
 
 input{
     width:18em;

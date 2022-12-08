@@ -10,8 +10,23 @@ form{
 }
 
 
-.input-group{
-    margin-top:5em;
-    right:10em;
-    width:30em;
+.text-center {
+    height:8em;
+    margin-left:40%;
+    width:30%;
 }
+
+.Text{
+    text-align:center;
+    margin-top:7em;
+}
+
+.pagination{
+    justify-content: center;
+    margin:2em 0;
+}
+
+.page-link{
+    color:black;
+}
+

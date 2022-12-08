@@ -15,6 +15,8 @@ import RegisterStudent from './User/Educator/RegisterStudent';
 import Footer from './Footer/Footer';
 import Find from './Find/Find';
 import Board from './Board/Board';
+import About from './About/About';
+import Team from './Team/Team';
 
 function App() {
   return (
@@ -63,6 +65,10 @@ function App() {
         {/*board*/}
         <Route path="/board" exact={true} element={<Board/>} />
       </Routes>
+
+      {/*시험용으로 지울거*/}
+      <Route path="/about" exact={true} element={<About/>} />
+      <Route path="/team" exact={true} element={<Team/>} />
       <Footer />
     </>
   );

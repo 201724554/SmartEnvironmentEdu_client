@@ -15,7 +15,12 @@ import RegisterStudent from './User/Educator/RegisterStudent';
 import Footer from './Footer/Footer';
 import Find from './Find/Find';
 import Board from './Board/Board';
+<<<<<<< HEAD
 import Board_content from './Board/Board_content';
+=======
+import About from './About/About';
+import Team from './Team/Team';
+>>>>>>> b2c2ad705c8293ffe3af9157634db210e453a43f
 
 function App() {
   return (
@@ -65,9 +70,6 @@ function App() {
         <Route path="/board" exact={true} element={<Board/>} />
         <Route path="/boardcontent" exact={true} element={<Board_content/>} />
       </Routes>
-
-   
-     
       <Footer />
     </>
   );

@@ -30,6 +30,7 @@ function LoginForm()
     return (
         <>
             <form onSubmit={handleSubmit(onSubmit)}>
+                <fieldset>
                 <h1>로그인</h1>
                 <div className="id">
                     <input placeholder="아이디" {...register("username", {required: {value: true, message: "아이디를 입력하세요"}})}/>
@@ -44,6 +45,7 @@ function LoginForm()
                     <a href="/Find">아이디 / 비밀번호 찾기</a>
                     <a href="/Register">회원가입</a>
                 </div>
+                </fieldset>
             </form>
         </>
     );

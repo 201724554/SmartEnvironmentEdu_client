@@ -1,0 +1,32 @@
+
+
+
+form{
+    width:20em;
+}
+
+#all{
+    padding-left:4em;
+}
+
+
+.text-center {
+    height:8em;
+    margin-left:40%;
+    width:30%;
+}
+
+.Text{
+    text-align:center;
+    margin-top:7em;
+}
+
+.pagination{
+    justify-content: center;
+    margin:2em 0;
+}
+
+.page-link{
+    color:black;
+}
+

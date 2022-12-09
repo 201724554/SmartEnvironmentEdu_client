@@ -13,6 +13,11 @@ import TestSocket from './Test/SocketTest';
 import TestFetch from './Test/TestFetch';
 import RegisterStudent from './User/Educator/RegisterStudent';
 import Footer from './Footer/Footer';
+import Find from './Find/Find';
+import Board from './Board/Board';
+import Board_content from './Board/Board_content';
+import About from './About/About';
+import Team from './Team/Team';
 import MainContent from './MainContent/MainContent';
 
 function App() {
@@ -57,6 +62,11 @@ function App() {
           exact={true}
           element={<RegisterStudent />}
         />
+        {/*id_password_find*/}
+        <Route path="/find" exact={true} element={<Find/>} />
+        {/*board*/}
+        <Route path="/board" exact={true} element={<Board/>} />
+        <Route path="/boardcontent" exact={true} element={<Board_content/>} />
       </Routes>
       <MainContent />
       <Footer />

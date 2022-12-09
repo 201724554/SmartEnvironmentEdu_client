@@ -17,7 +17,6 @@ import Find from './Find/Find';
 import Board from './Board/Board';
 import Board_content from './Board/Board_content';
 import About from './About/About';
-import Team from './Team/Team';
 import MainContent from './MainContent/MainContent';
 
 function App() {

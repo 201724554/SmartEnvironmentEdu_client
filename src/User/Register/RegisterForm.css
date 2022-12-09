@@ -1,0 +1,35 @@
+input {
+    width: 18em;
+    margin: 1em auto;
+  }
+  
+  h1 {
+    margin-bottom: 1em;
+  }
+  
+  button {
+    margin-top: 0.8em;
+    width: 18em;
+  }
+  
+  form {
+    margin: 7em auto;
+    width: 42em;
+    
+  }
+
+
+h1 {
+  margin-bottom: 1em;
+}
+
+button {
+  margin-top: 0.8em;
+  width: 18em;
+}
+
+form {
+  margin: 7em auto;
+  width: 42em;
+  padding-left: 7em;
+}

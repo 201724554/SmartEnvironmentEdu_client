@@ -13,6 +13,7 @@ import TestSocket from './Test/SocketTest';
 import TestFetch from './Test/TestFetch';
 import RegisterStudent from './User/Educator/RegisterStudent';
 import Footer from './Footer/Footer';
+import MainContent from './MainContent/MainContent';
 
 function App() {
   return (
@@ -57,6 +58,7 @@ function App() {
           element={<RegisterStudent />}
         />
       </Routes>
+      <MainContent />
       <Footer />
     </>
   );

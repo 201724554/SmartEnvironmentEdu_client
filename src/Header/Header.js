@@ -177,7 +177,7 @@ function Header() {
                   SEEd 기기 대여
                 </NavLink>
                 <NavLink className={'nav-link'} to="/">
-                  Education
+                  연수 신청
                 </NavLink>
                 <NavLink className={'nav-link'} to="/">
                   Board

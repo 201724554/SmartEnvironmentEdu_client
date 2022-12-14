@@ -5,7 +5,7 @@ import HomePage from './HomePage';
 import EducatorRegisterForm from './User/Register/EducatorRegisterForm';
 import UserAuthentication from './User/Register/UserAuthentication';
 import AddMACForm from './Device/Manager/AddMACForm';
-import LoginForm from './Login/LoginForm';
+import LoginForm from './User/Login/LoginForm';
 import ConnectPage from './Socket/ConnectPage';
 import RegisterDeviceForm from './Device/User/RegisterDeviceForm';
 import Header from './Header/Header';
@@ -13,11 +13,12 @@ import TestSocket from './Test/SocketTest';
 import TestFetch from './Test/TestFetch';
 import RegisterStudent from './User/Educator/RegisterStudent';
 import Footer from './Footer/Footer';
-import Find from './Find/Find';
+import Find from './User/Find/Find';
 import Board from './Board/Board';
 import Board_content from './Board/Board_content';
-import About from './About/About';
-import MainContent from './MainContent/MainContent';
+import Team from './About/Team/Team';
+import What from './About/What/What/What';
+
 
 function App() {
   return (
@@ -66,8 +67,11 @@ function App() {
         {/*board*/}
         <Route path="/board" exact={true} element={<Board/>} />
         <Route path="/boardcontent" exact={true} element={<Board_content/>} />
+        {/*Team*/}
+        <Route path="/team" exact={true} element={<Team/>} />
+        {/*About_Whatwedo*/}
+        <Route path="/what" exact={true} element={<What/>} />
       </Routes>
-      <MainContent />
       <Footer />
     </>
   );

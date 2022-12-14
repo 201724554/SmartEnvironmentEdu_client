@@ -99,7 +99,7 @@ function Header() {
                 className={'mx-2'}
                 style={{ fontSize: '1.2em' }}
               >
-                <NavLink className={'nav-link'} to="/">
+                <NavLink className={'nav-link'} to="/what">
                   What we do
                 </NavLink>
                 <NavLink className={'nav-link'} to="/team">

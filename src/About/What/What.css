@@ -29,7 +29,8 @@ img{
     line-height: 2.5em;
 }
 
-#box2 > ul > li{
+.box > ul > li{
     font-size:1em;
     line-height: 1.4em;;
 }
+

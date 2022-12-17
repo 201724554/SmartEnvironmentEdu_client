@@ -154,13 +154,13 @@ function Header() {
                 style={{ fontSize: '1.2em' }}
                 className={'mx-2'}
               >
-                <NavLink className={'nav-link'} to="/">
+                <NavLink className={'nav-link'} to="/news_reserch">
                   News and Research
                 </NavLink>
                 <NavLink className={'nav-link'} to="/">
                   Education Resources
                 </NavLink>
-                <NavLink className={'nav-link'} to="/">
+                <NavLink className={'nav-link'} to="/training">
                   Training and implementation
                 </NavLink>
               </NavDropdown>

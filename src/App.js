@@ -18,7 +18,7 @@ import Board from './Board/Board';
 import Board_content from './Board/Board_content';
 import Team from './About/Team/Team';
 import What from './About/What/What';
-
+import Training from './Learnmore/Training';
 
 function App() {
   return (
@@ -67,10 +67,13 @@ function App() {
         {/*board*/}
         <Route path="/board" exact={true} element={<Board/>} />
         <Route path="/boardcontent" exact={true} element={<Board_content/>} />
-        {/*Team*/}
+        {/*About*/}
         <Route path="/team" exact={true} element={<Team/>} />
-        {/*About_Whatwedo*/}
+        
         <Route path="/what" exact={true} element={<What/>} />
+
+        {/*Learnmore*/}
+        <Route path="/training" exact={true} element={<Training/>} />
       </Routes>
       <Footer />
     </>

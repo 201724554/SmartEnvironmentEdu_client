@@ -14,9 +14,15 @@ function Board(){
   </div>
  
 </section>
-
-<div className="bg-info clearfix" >
-    <input type="text" class="form-control float-end" placeholder="Search " aria-label="Input group example" aria-describedby="btnGroupAddon"/>
+<div className="d-flex flex-row-reverse">
+<div class="d-lg-flex">
+<button type="button" class="btn btn-secondary" id="S_botton">Search</button>
+</div>
+<div class="d-lg-flex">
+    <label  class="visually-hidden" for="specificSizeInputName">Name</label>
+    <input type="text" class="form-control" id="specificSizeInputName" placeholder="Jane Doe"/>
+    
+</div>
 </div>
 
 

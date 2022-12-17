@@ -22,20 +22,10 @@ function Team(){
           </ul>
         </div>
         <div className="col-md-3 order-md-1">
-          <svg
-            className="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto"
-            width="400"
-            height="400"
-            xmlns="http://www.w3.org/4000/svg"
-            role="img"
-            aria-label="Placeholder:"
-            preserveAspectRatio="xMidYMid slice"
-            focusable="false"
-          >
-            <title>Placeholder</title>
-            <rect width="100%" height="100%" fill="#eee"></rect>
+       
+            <img src="./Image/About1.png" width="400" alt="image"/>
             
-          </svg>
+          
         </div>
       </div>
       <hr className="featurette-divider"></hr>

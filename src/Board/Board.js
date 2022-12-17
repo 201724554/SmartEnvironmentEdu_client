@@ -14,6 +14,7 @@ function Board(){
   </div>
  
 </section>
+<div className="container">
 <div className="d-flex flex-row-reverse">
 <div class="d-lg-flex">
 <button type="button" class="btn btn-secondary" id="S_botton">Search</button>
@@ -24,7 +25,7 @@ function Board(){
     
 </div>
 </div>
-
+</div>
 
 
 <div className="album py-5 bg-light">

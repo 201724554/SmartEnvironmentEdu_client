@@ -1,5 +1,11 @@
 import React, { Component } from 'react';
 import './What.css';
+import what1 from "./Image/what1.png";
+import what2 from "./Image/what2.png";
+import what3 from "./Image/what3.png";
+import what4 from "./Image/what4.png";
+import what5 from "./Image/what5.png";
+
 
 function What(){
     return(
@@ -20,7 +26,7 @@ function What(){
                 <p>피지컬 컴퓨팅기술과 스마트 디바이스를 활용한 사용자 친화적 환경모니터링 키트(SEM Kit)를 개발</p>
              
         <div className="row featurette" style={{ padding: '2em' }}>
-        <div className="col-md-9 order-md-2">
+        <div className="col-md-7 order-md-2">
             <br/>
           <h5 className="featurette-heading fw-normal lh-1">
           <b>사용자 친화적인 스마트 환경모니터링 킷(SEM Kit) 개발 </b><span className="text-muted"></span>
@@ -33,26 +39,14 @@ function What(){
             <li>저렴하고 내구성이 있는 사용자 친화적 스마트 환경 모니터링 킷(SEM Kit) 개발</li>
           </ul>
         </div>
-        <div className="col-md-3 order-md-1">
-          <svg
-            className="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto"
-            width="400"
-            height="400"
-            xmlns="http://www.w3.org/4000/svg"
-            role="img"
-            aria-label="Placeholder:"
-            preserveAspectRatio="xMidYMid slice"
-            focusable="false"
-          >
-            <title>Placeholder</title>
-            <rect width="100%" height="100%" fill="#eee"></rect>
-            
-          </svg>
+        <div className="col-md-5 order-md-1">
+          <img src={what1} width="100%"/>
+           
         </div>
         </div>
         <hr className="featurette-divider"></hr>
       <div className="row featurette" style={{ padding: '2em' }}>
-        <div className="col-md-9 order-md-2">
+        <div className="col-md-7 order-md-2">
           <h5 className="featurette-heading fw-normal lh-1">
           <br/>
          <b> 지역생태 환경 데이터 예비 수집 및 분석을 통한 스마트 환경모니터링 킷(SEM Kit) 보완</b>
@@ -64,28 +58,17 @@ function What(){
               <li>연동되는 스마트 디바이스와의 네트워크 효율성을 최대한 증가</li>
           </ul>
         </div>
-        <div className="col-md-3 order-md-1">
-          <svg
-            className="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto"
-            width="400"
-            height="400"
-            xmlns="http://www.w3.org/4000/svg"
-            role="img"
-            aria-label="Placeholder:"
-            preserveAspectRatio="xMidYMid slice"
-            focusable="false"
-          >
-            <title>Placeholder</title>
-            <rect width="100%" height="100%" fill="#eee"></rect>
-            
-          </svg>
+        <div className="col-md-5 order-md-1">
+         <img src={what2} width="100%"/>
         </div>
         </div>
             </div>
             <br></br><h4>2. 스마트 환경교육 프로그램자료와 온라인 코스웨어 개발</h4><hr/>
                 <h6>대상자별 스마트 환경교육 역량 선정 및 대상자별 스마트 환경교육 프로그램 개발  및 교육역량 연결</h6>
             <div className="box" id="box2">
-                <img id="img3" src="" width="400" height="400"></img>
+            <div className="what2">
+            <img src={what3} width="100%"/>
+            </div>
                 <p>	<br/><br/>
                     1) 환경지식 역량: 핵심적 지식 기반[ 2015개정교육과정과 선진국의 환경교육기초 자료 분석 기반 학교 급별 핵심적 지식 교육<br/><br/>
                     2) 시스템 사고역량: 이원론적 사고에서 시스템 사고로[환경에 대한 시스템적 이해, 다변인 상호작용, 시스템구조 모두 고려<br/><br/>
@@ -98,7 +81,9 @@ function What(){
                 <li>융합적 문제해결력 향상을 위한 융합적 탐구와 공학적 문제해결 활동 : 공학적설계(engineering desing)요소를 통한 환경문제의 실제적 해결을 경험</li><br/>
                 <li>의사결정과 실천적 역량을 위한 사회-과학적 문제(SSI) 토론 : 환경문제를 사회, 경제, 문화, 정치 등 다양한 측면에서 조망,  SSI토론으로 환경에 대한 윤리, 책임의식, 논리적 추론</li>
             </ul>
-
+            <div className="what4">
+            <img  src={what4} width="100%"/>
+            </div>
             </div><br/><br/>
             <h4>3. 스마트 환경교육 효과 검증도구 개발 및 대상자별 적용</h4><hr/>
   
@@ -108,6 +93,8 @@ function What(){
                 <li> 스마트 환경교육 프로그램 대상자별 적용 및 효과 검증 : 환경적 핵심역량에 근거한 신뢰롭고 타당한 평가 도구 보급</li><br/>
                 <li>시민지도사 및 환경 교사 재교육 프로그램 확산 방안:  교육 및 지도사 양성을  통한 스마트 환경 교육의 신속한 학교 현장화</li><br/>
               </ul>
+
+            <img src={what5} width="100%"></img>
                 
             </div><br/>
 

@@ -1,5 +1,8 @@
 import React, {  } from 'react';
 import './Team.css';
+import About1 from './Image/About1.png';
+import About2 from './Image/About2.jpg';
+import About3 from './Image/About3.jpg';
 
 function Team(){
     return(
@@ -22,8 +25,9 @@ function Team(){
           </ul>
         </div>
         <div className="col-md-3 order-md-1">
+          
        
-            <img src="./Image/About1.png" width="400" alt="image"/>
+            <img src={About1} width="100%" />
             
           
         </div>
@@ -45,20 +49,7 @@ function Team(){
           </ul>
         </div>
         <div className="col-md-3 order-md-1">
-          <svg
-            className="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto"
-            width="400"
-            height="400"
-            xmlns="http://www.w3.org/4000/svg"
-            role="img"
-            aria-label="Placeholder:"
-            preserveAspectRatio="xMidYMid slice"
-            focusable="false"
-          >
-            <title>Placeholder</title>
-            <rect width="100%" height="100%" fill="#eee"></rect>
-            
-          </svg>
+        <img src={About2} width="100%" />
         </div>
       </div>
       <hr className="featurette-divider"></hr>
@@ -78,20 +69,7 @@ function Team(){
           </ul>
         </div>
         <div className="col-md-3 order-md-1">
-          <svg
-            className="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto"
-            width="400"
-            height="400"
-            xmlns="http://www.w3.org/4000/svg"
-            role="img"
-            aria-label="Placeholder:"
-            preserveAspectRatio="xMidYMid slice"
-            focusable="false"
-          >
-            <title>Placeholder</title>
-            <rect width="100%" height="100%" fill="#eee"></rect>
-            
-          </svg>
+        <img src={About3} width="100%" />
         </div>
       </div>
       <hr className="featurette-divider"></hr>
@@ -105,9 +83,9 @@ function Team(){
         <div className="col-md-3 order-md-1">
           <svg
             className="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto"
-            width="400"
-            height="400"
-            xmlns="http://www.w3.org/4000/svg"
+            width="270"
+            height="270"
+            xmlns="http://www.w3.org/2700/svg"
             role="img"
             aria-label="Placeholder:"
             preserveAspectRatio="xMidYMid slice"

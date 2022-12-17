@@ -19,6 +19,7 @@ import Board_content from './Board/Board_content';
 import Team from './About/Team/Team';
 import What from './About/What/What';
 import Training from './Learnmore/Training';
+import News from './Learnmore/News';
 
 function App() {
   return (
@@ -72,8 +73,10 @@ function App() {
         
         <Route path="/what" exact={true} element={<What/>} />
 
-        {/*Learnmore*/}
+        {/*Learnmore*/} 
         <Route path="/training" exact={true} element={<Training/>} />
+        <Route path="/news_reserch" exact={true} element={<News/>} />
+        
       </Routes>
       <Footer />
     </>

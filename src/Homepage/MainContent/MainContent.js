@@ -1,8 +1,14 @@
 import './MainContent.css';
+import home1 from './Image/home1.jpg';
+import home2 from './Image/home2.jpg';
+import home3 from './Image/home3.jpg';
+import home4 from './Image/home4.jpg';
+
 
 function ABC() {
   return (
-    <div>
+    <>
+    <div className="container">
       <div className="row" style={{ padding: '2em' }}>
         <div className="col-lg-4">
           <svg
@@ -83,6 +89,7 @@ function ABC() {
           </p>
         </div>
       </div>
+    </div>
       <div className="container">
       <hr className="featurette-divider"></hr>
       <div className="row featurette" style={{ padding: '2em' }}>
@@ -100,20 +107,8 @@ function ABC() {
           </ul>
         </div>
         <div className="col-md-5">
-          <svg
-            className="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto"
-            width="300"
-            height="300"
-            xmlns="http://www.w3.org/2000/svg"
-            role="img"
-            aria-label="Placeholder: 300x300"
-            preserveAspectRatio="xMidYMid slice"
-            focusable="false"
-            
-          >
-            <image xlinkHref="./Image/Home1.jpg" width="100%" height="100%" ></image>
-            
-          </svg>
+        <img src={home1} width="100%"/>
+
         </div>
       </div>
       <hr className="featurette-divider"></hr>
@@ -132,18 +127,7 @@ function ABC() {
     
         </div>
         <div className="col-md-5 order-md-1">
-          <svg
-            className="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto"
-            width="300"
-            height="300"
-            xmlns="http://www.w3.org/2000/svg"
-            role="img"
-            aria-label="Placeholder: 300x300"
-            preserveAspectRatio="xMidYMid slice"
-            focusable="false"
-          >
-             <image xlinkHref="./Image/home2.jpg" width="100%" height="100%" ></image>
-          </svg>
+          <img src={home2} width="100%"/>
         </div>
       </div>
       <hr className="featurette-divider"></hr>
@@ -162,18 +146,7 @@ function ABC() {
           </ul>
         </div>
         <div className="col-md-5">
-          <svg
-            className="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto"
-            width="300"
-            height="300"
-            xmlns="http://www.w3.org/2000/svg"
-            role="img"
-            aria-label="Placeholder: 300x300"
-            preserveAspectRatio="xMidYMid slice"
-            focusable="false"
-          >
-           <image xlinkHref="./Image/home3.jpg" width="100%" height="100%"/>
-          </svg>
+        <img src={home3} width="100%"/>
         </div>
       </div>
       <hr className="featurette-divider"></hr>
@@ -190,22 +163,11 @@ function ABC() {
           </ul>
         </div>
         <div className="col-md-5 order-md-1">
-          <svg
-            className="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto"
-            width="300"
-            height="300"
-            xmlns="http://www.w3.org/2000/svg"
-            role="img"
-            aria-label="Placeholder: 300x300"
-            preserveAspectRatio="xMidYMid slice"
-            focusable="false"
-          >
-          <image xlinkHref="./Image/home4.jpg" width="100%" height="100%" ></image>
-          </svg>
+        <img src={home4} width="100%"/>
         </div>
       </div>
       </div>
-    </div>
+    </>
   );
 }
 

@@ -157,7 +157,7 @@ function Header() {
                 <NavLink className={'nav-link'} to="/news_reserch">
                   News and Research
                 </NavLink>
-                <NavLink className={'nav-link'} to="/">
+                <NavLink className={'nav-link'} to="/resourceBoard">
                   Education Resources
                 </NavLink>
                 <NavLink className={'nav-link'} to="/training">

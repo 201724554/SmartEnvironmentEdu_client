@@ -41,7 +41,7 @@ function LoginForm()
                     <input placeholder="비밀번호" type="password" {...register("password", {required: {value: true, message: "비밀번호를 입력하세요"}})}/>
                     {errors.password && <span style={{color:'red', fontSize:"13px"}}>{errors.password.message}</span>}
                 </div>
-                <button type="submit" class="btn btn-secondary">로그인</button>
+                <button type="submit" className="btn btn-secondary">로그인</button>
                 <div className="find">
                     <a href="/Find">아이디 / 비밀번호 찾기</a>
                     <a href="/Register">회원가입</a>

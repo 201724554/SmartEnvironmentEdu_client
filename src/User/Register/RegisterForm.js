@@ -59,7 +59,9 @@ function RegisterForm() {
   }
 
   return (
+
     <form onSubmit={handleSubmit(onSubmit)}>
+      <filedset>
       <h1>회원가입</h1>
       <div className="input-box">
         <input
@@ -114,6 +116,7 @@ function RegisterForm() {
       <button type="submit" class="btn btn-secondary">
         회원가입
       </button>
+      </filedset>
     </form>
   );
 }

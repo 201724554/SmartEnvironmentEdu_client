@@ -1,12 +1,12 @@
 .id{
-   margin:0 auto;
+  
    width:60em;
 }
 
 
 
 .password{
-    margin:0 auto;
+    
     width:60em;
 }
 
@@ -16,9 +16,10 @@ h1{
 
 form{
     margin:9em auto; 
-    
+   
 
 }
+
 
 
 
@@ -43,3 +44,7 @@ button{
     width:18em;
 }
 
+fieldset{
+    justify-content: center;
+    
+}

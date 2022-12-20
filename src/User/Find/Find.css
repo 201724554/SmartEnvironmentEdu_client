@@ -7,7 +7,8 @@
 }
 
 fieldset{
-    width:25em;
+    margin:0 auto;
+    justify-content: center;
        
 }
 
@@ -15,4 +16,7 @@ fieldset{
     margin-top: -2em;
 }
 
+form{
+    margin:6em auto;
+}
 

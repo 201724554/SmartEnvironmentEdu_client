@@ -11,12 +11,7 @@ input {
     margin-top: 0.8em;
     width: 18em;
   }
-  
-  form {
-    margin: 7em auto;
-    width: 42em;
-    
-  }
+
 
 
 h1 {
@@ -26,10 +21,17 @@ h1 {
 button {
   margin-top: 0.8em;
   width: 18em;
+  
 }
 
 form {
   margin: 7em auto;
-  width: 42em;
-  padding-left: 7em;
+
+ 
+}
+
+filedset{
+  width:60em;
+  margin: 0 auto;
+  justify-content: center;
 }

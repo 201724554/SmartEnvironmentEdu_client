@@ -9,6 +9,20 @@ form{
     padding-left:4em;
 }
 
+.form-control{
+    width:50%;
+}
+
+#S_botton{
+    width:6em;
+    height:2.3em;
+    margin-left:1.5em;
+    margin-top:1em;
+}
+
+#specificSizeInputName{
+    width:15em;
+}
 
 .text-center {
     height:8em;

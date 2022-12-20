@@ -99,10 +99,10 @@ function Header() {
                 className={'mx-2'}
                 style={{ fontSize: '1.2em' }}
               >
-                <NavLink className={'nav-link'} to="/">
+                <NavLink className={'nav-link'} to="/what">
                   What we do
                 </NavLink>
-                <NavLink className={'nav-link'} to="/">
+                <NavLink className={'nav-link'} to="/team">
                   TEAM
                 </NavLink>
                 <NavLink className={'nav-link'} to="/">
@@ -154,13 +154,13 @@ function Header() {
                 style={{ fontSize: '1.2em' }}
                 className={'mx-2'}
               >
-                <NavLink className={'nav-link'} to="/">
+                <NavLink className={'nav-link'} to="/news_reserch">
                   News and Research
                 </NavLink>
                 <NavLink className={'nav-link'} to="/">
                   Education Resources
                 </NavLink>
-                <NavLink className={'nav-link'} to="/">
+                <NavLink className={'nav-link'} to="/training">
                   Training and implementation
                 </NavLink>
               </NavDropdown>
@@ -177,9 +177,9 @@ function Header() {
                   SEEd 기기 대여
                 </NavLink>
                 <NavLink className={'nav-link'} to="/">
-                  Education
+                  연수 신청
                 </NavLink>
-                <NavLink className={'nav-link'} to="/">
+                <NavLink className={'nav-link'} to="/board">
                   Board
                 </NavLink>
               </NavDropdown>

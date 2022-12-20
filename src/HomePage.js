@@ -1,9 +1,12 @@
-import Button_set from './Button/Button';
+import Button_set from './Homepage/Button/Button';
+import MainContent from './Homepage/MainContent/MainContent';
+import React, {  } from 'react';
 
 function HomePage() {
   return (
     <>
-      <Button_set/>
+      <Button_set />
+      <MainContent />
     </>
   );
 }

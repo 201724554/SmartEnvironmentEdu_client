@@ -4,10 +4,7 @@ import {decodeToken} from "react-jwt";
 function UserMacList(props)
 {
     return(
-        <>
-            {
-                props.mac.username === decodeToken(localStorage.getItem("refresh")).username ? (<div>{props.mac.username}(본인)</div>) : (<div>{props.mac.username}</div>)
-            }
+        <div>
             {
                 props.mac.macList.map((elem, idx)=>
                     (<div key={idx}>
@@ -15,7 +12,7 @@ function UserMacList(props)
                     </div>)
                 )
             }
-        </>
+        </div>
     );
 }
 

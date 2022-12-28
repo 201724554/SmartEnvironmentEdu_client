@@ -20,8 +20,6 @@ import Team from './About/Team/Team';
 import What from './About/What/What';
 import Training from './Learnmore/Training';
 import News from './Learnmore/News';
-import ResourceBoard from "./Learnmore/ResourceBoard/ResourceBoard";
-import Upload from "./Learnmore/ResourceBoard/Upload";
 
 function App() {
   return (
@@ -79,8 +77,6 @@ function App() {
           {/*Learnmore*/}
           <Route path="/training" exact={true} element={<Training/>} />
           <Route path="/news_reserch" exact={true} element={<News/>} />
-          <Route path="/resourceBoard" exact={true} element={<ResourceBoard/>} />
-          <Route path="/upload" exact={true} element={<Upload/>} />
 
         </Routes>
       </div>

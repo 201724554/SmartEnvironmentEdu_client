@@ -1,9 +1,9 @@
 import {useForm} from "react-hook-form";
-import axios from "axios";
 import {RESPONSE_CONFLICT, RESPONSE_SERV_UNAVAILABLE} from "../../Common/Response";
 import {useState} from "react";
 import {useNavigate} from "react-router-dom";
 import {ROLE} from "../../Common/Role";
+import {customAxios} from "../../Common/CustomAxios";
 
 function EducatorRegisterForm()
 {
@@ -17,7 +17,7 @@ function EducatorRegisterForm()
     {
         if(data.password === passwordCheck)
         {
-            axios.post("http://localhost:8080/register/educator", {...data}).then((response) => {
+            customAxios.post("/register/educator", {...data}).then((response) => {
                 if(response.data.code === 200)
                 {
                     alert("입력하신 메일 주소로 인증번호를 전송했습니다. 가입 완료를 위해 인증번호를 입력해주세요");

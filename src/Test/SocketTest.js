@@ -1,6 +1,7 @@
 import SockJS from 'sockjs-client';
 import {useEffect, useState} from "react";
 import {Button} from "react-bootstrap";
+import {customAxios} from "../Common/CustomAxios";
 
 
 const stomp = require('stompjs');
@@ -10,10 +11,9 @@ let cnt = 0;
 function TestSocket()
 {
     const [connected, setConnected] = useState(false);
-    /*useEffect(()=>{
-        json = {};
+    useEffect(()=>{
+       /* json = {};
         json.mac = "bb:bb:bb:bb:bb:bb";
-        json.date = "2022-08-13 12:00:00";
         json.hum = 40 + cnt;
         json.temp = 24 + cnt;
         json.tur = 72.4 + cnt;
@@ -24,14 +24,14 @@ function TestSocket()
         json.lux = 7.34;
         json.do = 7.54;
         json.pre = 7.41;
-        cnt++;
-    },[])*/
+        cnt++;*/
+    },[])
 
     function register()
     {
-        const sock = new SockJS("http://localhost:8080/client/socket");
+        const sock = new SockJS("http://13.124.30.108:8080/client/socket");
         stompClient = stomp.over(sock);
-        stompClient.connect({authorization: localStorage.getItem("refresh")}, onConnected, onError)
+        stompClient.connect({/*authorization: localStorage.getItem("refresh")*/}, onConnected, onError)
     }
 
     function disconnect()
@@ -63,10 +63,8 @@ function TestSocket()
 
     function send()
     {
-        let date = new Date();
         json = {};
         json.mac = "bb:bb:bb:bb:bb:bb";
-        json.dateString = date.toUTCString();
         json.hum = getRand(20, 40);
         json.temp = getRand(20, 40);
         json.tur = getRand(20, 40);
@@ -77,8 +75,9 @@ function TestSocket()
         json.lux = getRand(20, 40);
         json.dox = getRand(20, 40);
         json.pre = getRand(20, 40);
+        json.date = "2022-12-27T20:46:03.734431";
         cnt++;
-        stompClient.send("/app/test", {}, JSON.stringify(json));
+        stompClient.send("/topic/C0:49:EF:EF:EF:78", {}, "{EXITDO}");
     }
 
 

@@ -1,5 +1,4 @@
 import SocketConnect from "./SocketConnect";
-import {decodeToken} from "react-jwt";
 
 function UserMacList(props)
 {

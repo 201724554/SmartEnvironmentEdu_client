@@ -1,5 +1,5 @@
 import SockJS from 'sockjs-client';
-import {useEffect, useRef, useState} from "react";
+import {useState} from "react";
 import SingleDataContainer from "./SingleDataContainer";
 import {decodeToken} from "react-jwt";
 import {customAxios} from "../Common/CustomAxios";
@@ -17,6 +17,18 @@ function SocketConnect(props) {
     const [receivedData, setReceivedData] = useState([]);
     const [saveData, setSaveData] = useState([]);
     let location = "";
+    let lastReceivedDate = "";
+    const [isConnectionDropped, setIsConnectionDropped] = useState(false);
+
+    setInterval(() => {
+        if (lastReceivedDate !== "") {
+            const currentDate = new Date();
+            const lastReceivedDateInMillis = Date.parse(lastReceivedDate);
+            if (Date.parse(currentDate.toUTCString()) - lastReceivedDateInMillis >= 6000) {
+                setIsConnectionDropped(true);
+            }
+        }
+    }, 5000);
 
     function register() {
         const sock = new SockJS("http://13.124.30.108:8080/client/socket");
@@ -38,13 +50,18 @@ function SocketConnect(props) {
         alert("연결 실패");
     }
 
+    function sendCalibrationMsg(message) {
+        stompClient.send("/topic/" + props.mac, {}, message);
+    }
+
     function onMessageReceived(payload) {
+        setIsConnectionDropped(false);
+
         receiveObject = JSON.parse(payload.body);
-        if(location !== "")
-        {
+        if (location !== "") {
             receiveObject.location = location;
         }
-        console.log(receiveObject)
+        lastReceivedDate = receiveObject.dateString;
         receivedData.push(receiveObject);
         if (receivedData.length > 10) {
             receivedData.splice(0, 1);
@@ -74,8 +91,10 @@ function SocketConnect(props) {
                         cursor: "pointer",
                         backgroundColor: `${connected === false ? "rgb(192,192,192)" : "rgb(102,255,102)"}`
                     }} onClick={() => {
-                        if(connected === false) {
-                            location = prompt("위치 정보를 입력하세요(optional)");
+                        if (connected === false) {
+                            if (props.username === decodeToken(localStorage.getItem("refresh")).username) {
+                                location = prompt("위치 정보를 입력하세요(optional)");
+                            }
                             register();
                         } else {
                             disconnect()
@@ -95,25 +114,18 @@ function SocketConnect(props) {
                 <div>id: {props.username}</div>
             </div>
             &nbsp;&nbsp;&nbsp;&nbsp;
+            <div style={{
+                fontSize: "0.6em",
+                color: "red"
+            }}>{connected === true && isConnectionDropped === true ? "전송 중단됨" : ""}</div>
             <div className={connected === true ? "border pt-2 ps-2 pe-2" : ""}>
-                {
-                    /*connected === true ? (
-                        <div className="pb-2"><input ref={locationInputRef} placeholder="위치정보" type="text" size="10"/><span
-                            style={{cursor: "pointer"}} className="border ms-3" onClick={() => {
-                            if (locationInputRef.current.value.length > 10) {
-                                alert("위치 정보는 10자보다 클 수 없습니다");
-                            } else {
-                                locationValue = locationInputRef.current.value;
-                                alert("적용되었습니다");
-                            }
-                        }}>적용하기</span></div>) : (<></>)*/
-                }
                 {
                     connected === true
                         ? dataTypes.map((elem) =>
                             (<div key={elem}>
                                 <SingleDataContainer type={elem} data={receivedData}
-                                                     current={receivedData[receivedData.length - 1]}/>
+                                                     current={receivedData[receivedData.length - 1]} stomp={stompClient}
+                                                     sendFunction={sendCalibrationMsg}/>
                             </div>)
                         )
                         : (<></>)

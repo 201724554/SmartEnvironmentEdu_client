@@ -9,6 +9,7 @@ const stomp = require('stompjs');
 let stompClient = null;
 let receiveObject = null
 let save = false;
+let lastReceivedDate = null;
 
 function SocketConnect(props) {
     const dataTypes = ["temp", "pH", "hum", "hum_earth", "tur", "dust", "dox", "co2", "lux", "pre"];
@@ -17,14 +18,13 @@ function SocketConnect(props) {
     const [receivedData, setReceivedData] = useState([]);
     const [saveData, setSaveData] = useState([]);
     let location = "";
-    let lastReceivedDate = "";
     const [isConnectionDropped, setIsConnectionDropped] = useState(false);
 
     setInterval(() => {
         if (lastReceivedDate !== "") {
             const currentDate = new Date();
             const lastReceivedDateInMillis = Date.parse(lastReceivedDate);
-            if (Date.parse(currentDate.toUTCString()) - lastReceivedDateInMillis >= 6000) {
+            if (lastReceivedDate === null || Date.parse(currentDate.toUTCString()) - lastReceivedDateInMillis >= 6000) {
                 setIsConnectionDropped(true);
             }
         }
@@ -55,6 +55,7 @@ function SocketConnect(props) {
     }
 
     function onMessageReceived(payload) {
+        lastReceivedDate = new Date();
         setIsConnectionDropped(false);
 
         receiveObject = JSON.parse(payload.body);
@@ -97,7 +98,7 @@ function SocketConnect(props) {
                             }
                             register();
                         } else {
-                            disconnect()
+                            disconnect();
                         }
                     }}>{props.mac}</span>
                     {

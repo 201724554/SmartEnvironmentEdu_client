@@ -30,7 +30,7 @@ form {
  
 }
 
-filedset{
+.formBody{
   width:60em;
   margin: 0 auto;
   justify-content: center;

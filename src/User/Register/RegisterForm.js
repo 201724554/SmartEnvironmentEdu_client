@@ -61,7 +61,7 @@ function RegisterForm() {
     return (
 
         <form onSubmit={handleSubmit(onSubmit)}>
-            <filedset>
+            <div className="formBody">
                 <h1>회원가입</h1>
                 <div className="input-box">
                     <input
@@ -120,7 +120,7 @@ function RegisterForm() {
                 <button type="submit" className="btn btn-secondary">
                     회원가입
                 </button>
-            </filedset>
+            </div>
         </form>
     );
 }

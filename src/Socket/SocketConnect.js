@@ -84,56 +84,61 @@ function SocketConnect(props) {
 
 
     return (
-        <div>
-            <br/>
-            <div className="d-flex justify-content-between">
-                <div>
-                    <span className="border p-2" style={{
-                        cursor: "pointer",
-                        backgroundColor: `${connected === false ? "rgb(192,192,192)" : "rgb(102,255,102)"}`
-                    }} onClick={() => {
-                        if (connected === false) {
-                            if (props.username === decodeToken(localStorage.getItem("refresh")).username) {
-                                location = prompt("위치 정보를 입력하세요(optional)");
+            <div>
+                <br/>
+                <div className="d-flex justify-content-between">
+                    <div>
+                        <span className="border p-2" style={{
+                            cursor: "pointer",
+                            backgroundColor: `${connected === false ? "rgb(192,192,192)" : "rgb(102,255,102)"}`
+                        }} onClick={() => {
+                            if (connected === false) {
+                                if (props.username === decodeToken(localStorage.getItem("refresh")).username) {
+                                    location = prompt("위치 정보를 입력하세요(optional)");
+                                }
+                                register();
+                            } else {
+                                disconnect();
                             }
-                            register();
-                        } else {
-                            disconnect();
+                        }}>{props.mac}</span>
+                        {
+                            props.username === decodeToken(localStorage.getItem("refresh")).username ? (
+                                <span className="p-2" style={{fontSize: "0.7em"}}><input type="checkbox"
+                                                                                         checked={checked}
+                                                                                         onChange={() => {
+                                                                                             save = !save;
+                                                                                             setChecked(!checked)
+                                                                                         }}/>&nbsp;데이터 저장하기</span>) : (
+                                <div></div>)
                         }
-                    }}>{props.mac}</span>
+                    </div>
+                    <div>id: {props.username}</div>
+                </div>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <div style={{
+                    fontSize: "0.6em",
+                    color: "red"
+                }}>{connected === true && isConnectionDropped === true ? "전송 중단됨" : ""}</div>
+                <div className={connected === true ? "border pt-2 ps-2 pe-2" : ""}>
                     {
-                        props.username === decodeToken(localStorage.getItem("refresh")).username ? (
-                            <span className="p-2" style={{fontSize: "0.7em"}}><input type="checkbox"
-                                                                                     checked={checked}
-                                                                                     onChange={() => {
-                                                                                         save = !save;
-                                                                                         setChecked(!checked)
-                                                                                     }}/>&nbsp;데이터 저장하기</span>) : (
-                            <div></div>)
+                        connected === true && index === 0
+                            ? dataTypes.map((elem) =>
+                                (<div key={elem}>
+                                    <SingleDataContainer type={elem} data={receivedData}
+                                                         current={receivedData[receivedData.length - 1]} stomp={stompClient}
+                                                         sendFunction={sendCalibrationMsg}/>
+                                </div>)
+                            )
+                            : connected === true && index === 1 ? (<DetailedInfoPage types={dataTypes}
+                                                                                     data={receivedData}
+                                                                                     stomp={stompClient}
+                                                                                     sendFunction={sendCalibrationMsg}/>) : (<></>)
                     }
                 </div>
-                <div>id: {props.username}</div>
+                <button onClick={()=>{setIndex(index-1)}} disabled={index == 0 ? true : false}>prev</button>
+                <button onClick={()=>{setIndex(index+1)}} disabled={index == 2 ? true : false}>next</button>
             </div>
-            &nbsp;&nbsp;&nbsp;&nbsp;
-            <div style={{
-                fontSize: "0.6em",
-                color: "red"
-            }}>{connected === true && isConnectionDropped === true ? "전송 중단됨" : ""}</div>
-            <div className={connected === true ? "border pt-2 ps-2 pe-2" : ""}>
-                {
-                    connected === true
-                        ? dataTypes.map((elem) =>
-                            (<div key={elem}>
-                                <SingleDataContainer type={elem} data={receivedData}
-                                                     current={receivedData[receivedData.length - 1]} stomp={stompClient}
-                                                     sendFunction={sendCalibrationMsg}/>
-                            </div>)
-                        )
-                        : (<></>)
-                }
-            </div>
-        </div>
-    );
+        );
 }
 
 export default SocketConnect;

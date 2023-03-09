@@ -3,6 +3,8 @@ import {useState} from "react";
 import SingleDataContainer from "./SingleDataContainer";
 import {decodeToken} from "react-jwt";
 import {customAxios} from "../Common/CustomAxios";
+import DetailedInfoPage from "./DetailedInfoPage";
+
 
 
 const stomp = require('stompjs');
@@ -19,6 +21,7 @@ function SocketConnect(props) {
     const [saveData, setSaveData] = useState([]);
     let location = "";
     const [isConnectionDropped, setIsConnectionDropped] = useState(false);
+    const [index, setIndex] = useState(0);
 
     setInterval(() => {
         if (lastReceivedDate !== "") {
